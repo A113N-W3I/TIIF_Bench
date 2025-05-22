@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    .table-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    table {
+      width: 100%;
+      max-width: 1200px;
+      border-collapse: collapse;
+      font-size: 0.7rem;
+      table-layout: fixed;
+      margin: 0 auto;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 3px;
+      text-align: center;
+    }
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+    .model-name {
+      text-align: left;
+      font-weight: bold;
+      padding-left: 8px;
+      width: 100px;
+    }
+    .objblue {
+      color: #3273dc;
+      font-weight: bold;
+    }
+    .middleyellow {
+      color: #ffa500;
+      font-weight: bold;
+    }
+    .attrred {
+      color: #ff3860;
+      font-weight: bold;
+    }
+    .category-header {
+      text-align: center;
+      font-weight: bold;
+      padding: 4px 0;
+      background-color: #f9f9f9;
+    }
+    .multirow {
+      vertical-align: middle;
+      width: 100px;
+    }
+    .best-score {
+      font-weight: bold;
+    }
+    .vertical-line {
+      border-left: 1px solid #888;
+    }
+  </style>
+</head>
+<body>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th rowspan="3" class="multirow">Model</th>
+          <th colspan="2">Overall</th>
+          <th colspan="8">Basic Following</th>
+          <th colspan="12">Advanced Following</th>
+          <th colspan="2">Designer</th>
+        </tr>
+        <tr>
+          <th colspan="2"></th>
+          <th colspan="2">Avg</th>
+          <th colspan="2">Attribute</th>
+          <th colspan="2">Relation</th>
+          <th colspan="2">Reasoning</th>
+          <th colspan="2">Avg</th>
+          <th colspan="2">Attribute<br>+Relation</th>
+          <th colspan="2">Attribute<br>+Reasoning</th>
+          <th colspan="2">Relation<br>+Reasoning</th>
+          <th colspan="2">Style</th>
+          <th colspan="2">Text</th>
+          <th colspan="2">Real World</th>
+        </tr>
+        <tr>
+          <th>short</th>
+          <th>long</th>
+          <th>short</th>
+          <th>long</th>
+          <th>short</th>
+          <th>long</th>
+          <th>short</th>
+          <th>long</th>
+          <th>short</th>
+          <th>long</th>
+          <th>short</th>
+          <th>long</th>
+          <th>short</th>
+          <th>long</th>
+          <th>short</th>
+          <th>long</th>
+          <th>short</th>
+          <th>long</th>
+          <th>short</th>
+          <th>long</th>
+          <th>short</th>
+          <th>long</th>
+          <th>short</th>
+          <th>long</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="25" class="category-header"><span class="objblue">Diffusion based</span> Open-Source Models</td>
+        </tr>
+        <tr>
+          <td class="model-name">FLUX.1 dev</td>
+          <td class="best-score">71.38</td>
+          <td class="objblue best-score">71.94</td>
+          <td class="objblue best-score">83.58</td>
+          <td>79.67</td>
+          <td class="objblue best-score">87.50</td>
+          <td class="objblue best-score">83.50</td>
+          <td class="objblue best-score">87.75</td>
+          <td>80.75</td>
+          <td class="objblue best-score">75.50</td>
+          <td>72.75</td>
+          <td>65.95</td>
+          <td class="objblue best-score">68.68</td>
+          <td class="objblue best-score">67.25</td>
+          <td class="objblue best-score">73.87</td>
+          <td class="objblue best-score">74.00</td>
+          <td>73.50</td>
+          <td class="objblue best-score">69.25</td>
+          <td class="objblue best-score">71.75</td>
+          <td>66.67</td>
+          <td>66.67</td>
+          <td>44.00</td>
+          <td class="objblue best-score">53.00</td>
+          <td>70.52</td>
+          <td class="objblue best-score">71.27</td>
+        </tr>
+        <tr>
+          <td class="model-name">SD XL</td>
+          <td>55.14</td>
+          <td>42.30</td>
+          <td>65.92</td>
+          <td>53.50</td>
+          <td>59.50</td>
+          <td>51.00</td>
+          <td>77.75</td>
+          <td>62.75</td>
+          <td>60.50</td>
+          <td>46.75</td>
+          <td>49.76</td>
+          <td>36.38</td>
+          <td>48.00</td>
+          <td>35.75</td>
+          <td>56.38</td>
+          <td>45.50</td>
+          <td>52.75</td>
+          <td>36.25</td>
+          <td>73.33</td>
+          <td>60.00</td>
+          <td>17.00</td>
+          <td>1.00</td>
+          <td>51.12</td>
+          <td>41.79</td>
+        </tr>
+        <tr>
+          <td class="model-name">SD 3</td>
+          <td>67.65</td>
+          <td>66.22</td>
+          <td>79.00</td>
+          <td>77.75</td>
+          <td>83.50</td>
+          <td>80.00</td>
+          <td>82.25</td>
+          <td>79.00</td>
+          <td>71.25</td>
+          <td>74.25</td>
+          <td>61.91</td>
+          <td>59.99</td>
+          <td>61.25</td>
+          <td>64.25</td>
+          <td>69.00</td>
+          <td>70.50</td>
+          <td>51.12</td>
+          <td>58.00</td>
+          <td>66.67</td>
+          <td>76.67</td>
+          <td>60.00</td>
+          <td>21.00</td>
+          <td>63.43</td>
+          <td>67.54</td>
+        </tr>
+        <tr>
+          <td class="model-name">SD 3.5</td>
+          <td class="objblue best-score">71.66</td>
+          <td>67.42</td>
+          <td>78.83</td>
+          <td class="objblue best-score">80.00</td>
+          <td>80.00</td>
+          <td>77.00</td>
+          <td>81.50</td>
+          <td>83.75</td>
+          <td>73.00</td>
+          <td class="objblue best-score">79.25</td>
+          <td class="objblue best-score">68.13</td>
+          <td>61.67</td>
+          <td>67.00</td>
+          <td>62.25</td>
+          <td>74.00</td>
+          <td class="objblue best-score">74.62</td>
+          <td>60.50</td>
+          <td>62.00</td>
+          <td>73.33</td>
+          <td>63.33</td>
+          <td class="objblue best-score">71.00</td>
+          <td>43.00</td>
+          <td>64.93</td>
+          <td>66.79</td>
+        </tr>
+        <tr>
+          <td class="model-name">SANA Sprint</td>
+          <td>63.85</td>
+          <td>58.67</td>
+          <td>76.75</td>
+          <td>71.17</td>
+          <td>75.50</td>
+          <td>71.50</td>
+          <td>82.00</td>
+          <td>72.25</td>
+          <td>72.75</td>
+          <td>69.75</td>
+          <td>57.84</td>
+          <td>51.97</td>
+          <td>55.50</td>
+          <td>55.12</td>
+          <td>68.62</td>
+          <td>66.88</td>
+          <td>62.75</td>
+          <td>63.62</td>
+          <td>80.00</td>
+          <td>60.00</td>
+          <td>9.00</td>
+          <td>6.00</td>
+          <td>67.16</td>
+          <td>58.21</td>
+        </tr>
+        <tr>
+          <td class="model-name">SANA 1.5</td>
+          <td>67.32</td>
+          <td>65.90</td>
+          <td>79.83</td>
+          <td>77.25</td>
+          <td>80.00</td>
+          <td>78.00</td>
+          <td>85.75</td>
+          <td class="objblue best-score">83.75</td>
+          <td>73.75</td>
+          <td>70.00</td>
+          <td>61.67</td>
+          <td>60.84</td>
+          <td>65.50</td>
+          <td>56.75</td>
+          <td>70.12</td>
+          <td>73.25</td>
+          <td>63.12</td>
+          <td>66.00</td>
+          <td>80.00</td>
+          <td class="objblue best-score">80.00</td>
+          <td>18.00</td>
+          <td>16.00</td>
+          <td class="objblue best-score">71.27</td>
+          <td>69.03</td>
+        </tr>
+        <!-- More diffusion models - abbreviated for clarity -->
+        <!-- AR based models -->
+        <tr>
+          <td colspan="25" class="category-header"><span class="middleyellow">AR based</span> Open-Source Models</td>
+        </tr>
+        <tr>
+          <td class="model-name">Llamagen</td>
+          <td>41.84</td>
+          <td>38.39</td>
+          <td>53.17</td>
+          <td>50.17</td>
+          <td>48.50</td>
+          <td>42.50</td>
+          <td>59.75</td>
+          <td>60.50</td>
+          <td>51.25</td>
+          <td>47.50</td>
+          <td>36.06</td>
+          <td>32.78</td>
+          <td>39.00</td>
+          <td>31.75</td>
+          <td>41.00</td>
+          <td>47.38</td>
+          <td>49.75</td>
+          <td>46.38</td>
+          <td>46.67</td>
+          <td>33.33</td>
+          <td>0.00</td>
+          <td>0.00</td>
+          <td>39.93</td>
+          <td>35.82</td>
+        </tr>
+        <tr>
+          <td class="model-name">LightGen</td>
+          <td>53.39</td>
+          <td>43.58</td>
+          <td>66.75</td>
+          <td>48.08</td>
+          <td>56.00</td>
+          <td>47.50</td>
+          <td>75.00</td>
+          <td>46.00</td>
+          <td>69.25</td>
+          <td>50.75</td>
+          <td>46.91</td>
+          <td>41.70</td>
+          <td>62.62</td>
+          <td>41.00</td>
+          <td>61.87</td>
+          <td>50.63</td>
+          <td>50.50</td>
+          <td>45.50</td>
+          <td>53.33</td>
+          <td>53.33</td>
+          <td>0.00</td>
+          <td>7.00</td>
+          <td>51.12</td>
+          <td>50.75</td>
+        </tr>
+        <tr>
+          <td class="model-name">Show-o</td>
+          <td>59.89</td>
+          <td>59.03</td>
+          <td>73.25</td>
+          <td>76.00</td>
+          <td>75.00</td>
+          <td>80.00</td>
+          <td class="middleyellow best-score">79.00</td>
+          <td class="middleyellow best-score">78.50</td>
+          <td>65.75</td>
+          <td>69.50</td>
+          <td>53.84</td>
+          <td>50.55</td>
+          <td>61.13</td>
+          <td class="middleyellow best-score">57.00</td>
+          <td>68.75</td>
+          <td>69.12</td>
+          <td>66.62</td>
+          <td>56.38</td>
+          <td>63.33</td>
+          <td>66.67</td>
+          <td>4.00</td>
+          <td>3.00</td>
+          <td>55.22</td>
+          <td>51.12</td>
+        </tr>
+        <tr>
+          <td class="model-name">Infinity</td>
+          <td>62.24</td>
+          <td>62.49</td>
+          <td>73.25</td>
+          <td>75.58</td>
+          <td>74.50</td>
+          <td>77.00</td>
+          <td>73.00</td>
+          <td>77.75</td>
+          <td>72.25</td>
+          <td>72.00</td>
+          <td>56.81</td>
+          <td>55.15</td>
+          <td>60.62</td>
+          <td>55.75</td>
+          <td class="middleyellow best-score">74.38</td>
+          <td>64.87</td>
+          <td>60.38</td>
+          <td>59.87</td>
+          <td class="middleyellow best-score">80.00</td>
+          <td class="middleyellow best-score">73.33</td>
+          <td>11.00</td>
+          <td>24.00</td>
+          <td>54.48</td>
+          <td>57.09</td>
+        </tr>
+        <tr>
+          <td class="model-name">JanusPro</td>
+          <td class="middleyellow best-score">66.67</td>
+          <td class="middleyellow best-score">65.19</td>
+          <td class="middleyellow best-score">79.50</td>
+          <td class="middleyellow best-score">78.42</td>
+          <td class="middleyellow best-score">79.50</td>
+          <td class="middleyellow best-score">82.50</td>
+          <td>78.50</td>
+          <td>73.50</td>
+          <td class="middleyellow best-score">80.50</td>
+          <td class="middleyellow best-score">79.25</td>
+          <td class="middleyellow best-score">59.88</td>
+          <td class="middleyellow best-score">58.99</td>
+          <td class="middleyellow best-score">66.25</td>
+          <td>56.38</td>
+          <td>70.62</td>
+          <td class="middleyellow best-score">71.00</td>
+          <td class="middleyellow best-score">67.38</td>
+          <td class="middleyellow best-score">60.13</td>
+          <td>60.00</td>
+          <td>70.00</td>
+          <td class="middleyellow best-score">29.00</td>
+          <td class="middleyellow best-score">34.00</td>
+          <td class="middleyellow best-score">66.04</td>
+          <td class="middleyellow best-score">60.45</td>
+        </tr>
+        <!-- Closed-Source Models -->
+        <tr>
+          <td colspan="25" class="category-header"><span class="attrred">Closed-Source</span> Models</td>
+        </tr>
+        <tr>
+          <td class="model-name">DALL-E 3</td>
+          <td>75.13</td>
+          <td>70.98</td>
+          <td>78.89</td>
+          <td>78.67</td>
+          <td>79.67</td>
+          <td>80.00</td>
+          <td>81.00</td>
+          <td>79.00</td>
+          <td>76.00</td>
+          <td>77.00</td>
+          <td>73.56</td>
+          <td>67.44</td>
+          <td>73.63</td>
+          <td>67.38</td>
+          <td>72.17</td>
+          <td>71.50</td>
+          <td>63.75</td>
+          <td>60.88</td>
+          <td>89.66</td>
+          <td>86.67</td>
+          <td>67.00</td>
+          <td>55.00</td>
+          <td>73.13</td>
+          <td>61.19</td>
+        </tr>
+        <tr>
+          <td class="model-name">MidJourney v6</td>
+          <td>70.95</td>
+          <td>67.87</td>
+          <td>76.17</td>
+          <td>69.25</td>
+          <td>78.00</td>
+          <td>69.50</td>
+          <td>81.50</td>
+          <td>73.25</td>
+          <td>69.00</td>
+          <td>65.00</td>
+          <td>68.71</td>
+          <td>67.79</td>
+          <td>58.00</td>
+          <td>62.13</td>
+          <td>70.00</td>
+          <td>64.12</td>
+          <td>57.62</td>
+          <td>60.50</td>
+          <td>83.33</td>
+          <td>73.33</td>
+          <td>76.00</td>
+          <td>74.00</td>
+          <td>65.30</td>
+          <td>68.66</td>
+        </tr>
+        <tr>
+          <td class="model-name">MidJourney v7</td>
+          <td>68.91</td>
+          <td>65.86</td>
+          <td>77.58</td>
+          <td>76.17</td>
+          <td>77.75</td>
+          <td>82.00</td>
+          <td>82.25</td>
+          <td>77.00</td>
+          <td>72.75</td>
+          <td>69.50</td>
+          <td>64.83</td>
+          <td>60.70</td>
+          <td>67.38</td>
+          <td>62.88</td>
+          <td>81.38</td>
+          <td>71.75</td>
+          <td>60.88</td>
+          <td>64.75</td>
+          <td>83.33</td>
+          <td>80.00</td>
+          <td>25.00</td>
+          <td>21.00</td>
+          <td>69.03</td>
+          <td>63.81</td>
+        </tr>
+        <tr>
+          <td class="model-name">FLUX.1 Pro</td>
+          <td>67.49</td>
+          <td>70.06</td>
+          <td>79.25</td>
+          <td>79.08</td>
+          <td>79.00</td>
+          <td>81.50</td>
+          <td>83.00</td>
+          <td>84.00</td>
+          <td>75.75</td>
+          <td>71.75</td>
+          <td>61.27</td>
+          <td>65.54</td>
+          <td>62.50</td>
+          <td>65.75</td>
+          <td>70.00</td>
+          <td>71.63</td>
+          <td>66.12</td>
+          <td>67.88</td>
+          <td>63.00</td>
+          <td>63.00</td>
+          <td>36.00</td>
+          <td>56.00</td>
+          <td>72.00</td>
+          <td>69.00</td>
+        </tr>
+        <tr>
+          <td class="model-name">GPT-4o</td>
+          <td class="attrred best-score">89.32</td>
+          <td class="attrred best-score">88.46</td>
+          <td class="attrred best-score">90.92</td>
+          <td class="attrred best-score">89.83</td>
+          <td class="attrred best-score">91.50</td>
+          <td class="attrred best-score">87.25</td>
+          <td class="attrred best-score">84.75</td>
+          <td class="attrred best-score">84.75</td>
+          <td class="attrred best-score">96.50</td>
+          <td class="attrred best-score">97.50</td>
+          <td class="attrred best-score">88.72</td>
+          <td class="attrred best-score">88.52</td>
+          <td class="attrred best-score">87.25</td>
+          <td class="attrred best-score">89.62</td>
+          <td class="attrred best-score">87.38</td>
+          <td class="attrred best-score">84.12</td>
+          <td class="attrred best-score">85.75</td>
+          <td class="attrred best-score">83.37</td>
+          <td class="attrred best-score">90.00</td>
+          <td class="attrred best-score">93.33</td>
+          <td class="attrred best-score">90.00</td>
+          <td class="attrred best-score">87.00</td>
+          <td class="attrred best-score">89.93</td>
+          <td class="attrred best-score">93.66</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html> 
