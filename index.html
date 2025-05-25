@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Draw-and-Understand: Leveraging Visual Prompts to Enable MLLMs to Comprehend What You Want">
+        content="TIIF-Bench: How Does Your T2I Model Follow Your Instructions?">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Draw-and-Understand: Leveraging Visual Prompts to Enable MLLMs to Comprehend What You Want</title>
+  <title>TIIF-Bench: How Does Your T2I Model Follow Your Instructions?</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -31,7 +31,7 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/sphinx-v-logo.ico">
+  <link rel="icon" href="./static/images/logo.ico">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -40,6 +40,12 @@
   <script src="./static/js/index.js"></script>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    .easygreen { color: #009c4b; }
+    .middleyellow { color: #f25922; }
+    .hardred { color: #d8383a; }
+  </style>
 
 </head>
 <body>
@@ -87,7 +93,7 @@
             <div class="publication-links">
               <!-- Arxiv Link. -->
               <span class="link-block">
-                <a href="https://arxiv.org/abs/2403.20271"
+                <a href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
@@ -107,7 +113,7 @@
               </span> -->
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/AFeng-x/Draw-and-Understand"
+                <a href="https://github.com/A113N-W3I/TIIF-Bench"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -117,7 +123,7 @@
               </span>
               <!-- MDVP-Data Link. -->
               <span class="link-block">
-                <a href="https://huggingface.co/datasets/Afeng-x/Draw-and-Understand/tree/main/stage_2_fine-tuning/MDVP-Data"
+                <a href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="far fa-images"></i>
@@ -248,8 +254,107 @@
         <h2 class="title is-3 has-text-centered">
           Leaderboard
         </h2>
-        <div style="transform: scale(1.4); transform-origin: top center; width: 100%; overflow-x: hidden; margin-top: -200px;">
-          <iframe src="table.html" width="100%" height="820px" style="border: none; overflow: hidden;"></iframe>
+        <p class="has-text-centered" style="position:relative; z-index:10;">
+          Evaluated by {
+          <label class="radio" style="margin-right:5px; cursor:pointer;">
+            <input type="radio"
+                   name="evaluator"
+                   id="gpt4o-radio"
+                   checked
+                   onclick="document.getElementById('table-frame').src='table_gpt4o.html';">
+            <b>GPT-4o</b>
+          </label>
+          /
+          <label class="radio" style="margin-left:5px; cursor:pointer;">
+            <input type="radio"
+                   name="evaluator"
+                   id="qwen-radio"
+                   onclick="document.getElementById('table-frame').src='table_qwen.html';">
+            <b>QwenVL2.5-72B</b>
+          </label>
+          }
+          on the <b>testmini</b> subset of <img src="static/images/logo_transparent_bg.png" alt="Icon" style="height: 1.4em; vertical-align: middle; margin-right: -0.2em;"> <span class='tiifbench'>TIIF-Bench</span>
+        </p>
+        
+        <!-- 保持原 iframe 容器，如需仍用负 margin 可继续使用 -->
+        <div style="transform:scale(1.4);
+                    transform-origin:top center;
+                    width:100%;
+                    overflow-x:hidden;
+                    margin-top:-50px;">
+          <iframe src="table_gpt4o.html"
+                  width="100%"
+                  height="820px"
+                  style="border:none; overflow:hidden;"
+                  id="table-frame"></iframe>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Construction -->
+<section class="section" style="margin-top: 200px;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-12">
+        <h2 class="title is-3"><img src="static/images/logo_transparent_bg.png" alt="Icon" style="height: 1.4em; vertical-align: middle; margin-right: -0.2em;"> <span class='tiifbench'>TIIF-Bench</span> Construction</h2>
+        <div class="content has-text-justified">
+          <p>
+            We first group the prompts in existing benchmarks based on their semantics and leverage GPT-4o to extract the underlying 
+            <i>object–attribute/relation pairs</i>, forming a set of dimension-specific concept pools. In total, we construct <b>10 concept pools</b>
+             from existing benchmarks, categorized them into <b>three groups</b>, as summarized in Table:
+          </p>
+          <div class="has-text-centered" style="margin: 30px 0;">
+            <img src="static/images/concept-pools.jpg" alt="Concept Pools" style="max-width: 90%; height: auto; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+          </div>
+          <p>
+            Building upon concept pools, we generate prompts by randomly combining attributes from each pool, 
+            leveraging GPT-4o to compose them into natural instructions. We define <b>36 distinct combinations</b>, 
+            each paired with a dedicated meta-prompt to guide GPT-4o to assemble instructions. 
+            Prompts that combine elements drawn from a <i>single</i> concept-pool group are classified as 
+            <b class="easygreen">Basic Following</b>. In contrast, <b class="middleyellow">Advanced Following</b> prompts intertwine elements taken from 
+            <i>different</i> concept-pool groups, yielding more intricate compositions.
+          </p>
+          
+          <p>
+            To extend evaluation beyond conventional instruction-following skills, we introduce three novel dimensions:
+          </p>
+          
+          <p>
+            (i) <b>Text rendering</b> evaluates a model's ability to accurately reproduce complex typographic elements, 
+            using prompts sourced from the <i>Lex-Art</i> corpus.
+          </p>
+          
+          <p>
+            (ii) <b>Style control</b> assesses the model's capacity to adhere to high-level artistic directives, 
+            with prompts manually curated from leading AIGC creator communities.
+          </p>
+          
+          <p>
+            (iii) <b>Designer-level</b> prompts involve complex instructions that incorporate practical constraints 
+            and domain-specific knowledge, also collected through manual annotation.
+          </p>
+          
+          <p>
+            The text rendering and style control dimensions are included in the <b class="middleyellow">Advanced Following</b> set, 
+            while the designer-level prompts constitute the <b class="hardred">Designer Level Following</b> set.
+          </p>
+          <div class="has-text-centered" style="margin: 30px 0;">
+            <img src="static/images/concept-combination.jpg" alt="Concept Pools" style="max-width: 90%; height: auto; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+          </div>
+
+          <p>
+            Finally, for each generated prompt, we leverage GPT-4o to construct a corresponding long-form 
+            variant by expanding the content through natural language paraphrasing and stylistic elaboration, 
+            while faithfully preserving its original semantics. The whole pipeline can be summarized as:
+          </p>
+          <div class="has-text-centered" style="margin: 30px 0;">
+            <img src="static/images/data-pipeline.png" alt="Concept Pools" style="max-width: 90%; height: auto; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+          </div>
+
         </div>
       </div>
     </div>
@@ -260,21 +365,11 @@
 
 
 
-
-
-
-<section class="section" id="BibTeX" style="margin-top: 75px;">
+<section class="section" id="BibTeX" style="margin-top: 175px;">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>
       @misc{
-          lin2024drawandunderstand,
-          title={Draw-and-Understand: Leveraging Visual Prompts to Enable MLLMs to Comprehend What You Want}, 
-          author={Weifeng Lin and Xinyu Wei and Ruichuan An and Peng Gao and Bocheng Zou and Yulin Luo and Siyuan Huang and Shanghang Zhang and Hongsheng Li},
-          year={2024},
-          eprint={2403.20271},
-          archivePrefix={arXiv},
-          primaryClass={cs.CV}
       }
     </code></pre>
   </div>
