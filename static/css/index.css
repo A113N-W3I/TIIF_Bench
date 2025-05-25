@@ -63,6 +63,12 @@ body {
 
 }
 
+
+.easygreen { color: #009c4b; }
+.middleyellow { color: #f25922; }
+.hardred { color: #d8383a; }
+
+
 .publication-banner video {
   position: relative;
   left: auto;
