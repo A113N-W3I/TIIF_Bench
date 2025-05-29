@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    .table-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    table {
+      width: 100%;
+      max-width: 1200px;
+      border-collapse: collapse;
+      font-size: 0.7rem;
+      table-layout: fixed;
+      margin: 0 auto;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 3px;
+      text-align: center;
+    }
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+    .model-name {
+      text-align: left;
+      font-weight: bold;
+      padding-left: 8px;
+      width: 100px;
+    }
+    .objblue {
+      color: #3273dc;
+      font-weight: bold;
+    }
+    .middleyellow {
+      color: #ffa500;
+      font-weight: bold;
+    }
+    .attrred {
+      color: #ff3860;
+      font-weight: bold;
+    }
+    .category-header {
+      text-align: center;
+      font-weight: bold;
+      padding: 4px 0;
+      background-color: #f9f9f9;
+    }
+    .multirow {
+      vertical-align: middle;
+      width: 100px;
+    }
+    .best-score {
+      font-weight: bold;
+    }
+    .vertical-line {
+      border-left: 1px solid #888;
+    }
+    .easygreen {
+      color: #23d160;
+      font-weight: bold;
+    }
+    .hardred {
+      color: #ff3860;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th rowspan="3" class="multirow">Model</th>
+          <th colspan="2">Overall</th>
+          <th colspan="8" class="easygreen">Basic Following</th>
+          <th colspan="12" class="middleyellow">Advanced Following</th>
+          <th colspan="2" class="hardred">Designer</th>
+        </tr>
+        <tr>
+          <th colspan="2"></th>
+          <th colspan="2">Avg</th>
+          <th colspan="2">Attribute</th>
+          <th colspan="2">Relation</th>
+          <th colspan="2">Reasoning</th>
+          <th colspan="2">Avg</th>
+          <th colspan="2">Attribute<br>+Relation</th>
+          <th colspan="2">Attribute<br>+Reasoning</th>
+          <th colspan="2">Relation<br>+Reasoning</th>
+          <th colspan="2">Style</th>
+          <th colspan="2">Text</th>
+          <th colspan="2">Real World</th>
+        </tr>
+        <tr>
+          <th>short</th>
+          <th>long</th>
+          <th>short</th>
+          <th>long</th>
+          <th>short</th>
+          <th>long</th>
+          <th>short</th>
+          <th>long</th>
+          <th>short</th>
+          <th>long</th>
+          <th>short</th>
+          <th>long</th>
+          <th>short</th>
+          <th>long</th>
+          <th>short</th>
+          <th>long</th>
+          <th>short</th>
+          <th>long</th>
+          <th>short</th>
+          <th>long</th>
+          <th>short</th>
+          <th>long</th>
+          <th>short</th>
+          <th>long</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- ───────────── Diffusion based ‒ Open-Source ───────────── -->
+        <tr>
+          <td colspan="25" class="category-header">
+            <span class="objblue">Diffusion based</span> Models (QwenVL2.5-72B Evaluation)
+          </td>
+        </tr>
+
+        <!-- FLUX.1 dev -->
+        <tr><td class="model-name">FLUX.1 dev</td><td>65.96</td><td class="objblue best-score">65.74</td> <!-- Overall -->
+          <!-- Basic Following -->
+          <td class="objblue best-score">71.93</td><td>68.43</td> <!-- Avg -->
+          <td>79.52</td><td>74.25</td> <!-- Attribute -->
+          <td>79.46</td><td class="objblue best-score">75.90</td> <!-- Relation -->
+          <td class="objblue best-score">56.82</td><td>55.15</td> <!-- Reasoning -->
+          <!-- Advanced Following -->
+          <td>60.46</td><td>63.05</td> <!-- Avg -->
+          <td>70.84</td><td>67.07</td> <!-- Attribute + Relation -->
+          <td>59.67</td><td>58.55</td> <!-- Attribute + Reasoning -->
+          <td>64.06</td><td>63.06</td> <!-- Relation + Reasoning -->
+          <td>60.00</td><td>70.00</td> <!-- Style -->
+          <td>44.49</td><td class="objblue best-score">59.82</td> <!-- Text -->
+          <!-- Designer -->
+          <td class="objblue best-score">67.51</td><td class="objblue best-score">67.87</td> <!-- Avg -->
+        </tr>
+
+
+        <!-- SD 3 -->
+        <tr><td class="model-name">SD 3</td><td>65.84</td><td>63.30</td> <!-- Overall -->
+          <!-- Basic Following -->
+          <td>67.89</td><td class="objblue best-score">67.81</td> <!-- Avg -->
+          <td class="objblue best-score">76.35</td><td class="objblue best-score">73.95</td> <!-- Attribute -->
+          <td>74.06</td><td>73.50</td> <!-- Relation -->
+          <td>53.24</td><td>55.98</td> <!-- Reasoning -->
+          <!-- Advanced Following -->
+          <td class="objblue best-score">62.68</td><td>62.88</td> <!-- Avg -->
+          <td>67.98</td><td>68.61</td> <!-- Attribute + Relation -->
+          <td>57.96</td><td>59.04</td> <!-- Attribute + Reasoning -->
+          <td>61.08</td><td>63.16</td> <!-- Relation + Reasoning -->
+          <td>74.00</td><td>76.67</td> <!-- Style -->
+          <td>59.39</td><td>31.80</td> <!-- Text -->
+          <!-- Designer -->
+          <td>68.49</td><td>67.00</td> <!-- Avg -->
+        </tr>
+
+        <!-- SD 3.5 -->
+        <tr><td class="model-name">SD 3.5</td><td class="objblue best-score">67.21</td><td>63.98</td> <!-- Overall -->
+          <!-- Basic Following -->
+          <td>68.64</td><td>66.98</td> <!-- Avg -->
+          <td>76.80</td><td>74.40</td> <!-- Attribute -->
+          <td>75.88</td><td>73.25</td> <!-- Relation -->
+          <td>53.24</td><td>53.30</td> <!-- Reasoning -->
+          <!-- Advanced Following -->
+          <td class="objblue best-score">63.51</td><td class="objblue best-score">61.96</td> <!-- Avg -->
+          <td class="objblue best-score">69.76</td><td class="objblue best-score">65.87</td> <!-- Attribute + Relation -->
+          <td class="objblue best-score">57.73</td><td class="objblue best-score">57.78</td> <!-- Attribute + Reasoning -->
+          <td class="objblue best-score">61.03</td><td class="objblue best-score">62.62</td> <!-- Relation + Reasoning -->
+          <td>69.33</td><td>67.33</td> <!-- Style -->
+          <td class="objblue best-score">73.71</td><td>53.40</td> <!-- Text -->
+          <!-- Designer -->
+          <td>67.37</td><td>67.87</td> <!-- Avg -->
+        </tr>
+
+        <!-- SANA 1.5 -->
+        <tr><td class="model-name">SANA 1.5</td><td>62.96</td><td>60.88</td> <!-- Overall -->
+          <!-- Basic Following -->
+          <td>68.09</td><td>66.00</td> <!-- Avg -->
+          <td>73.50</td><td>70.70</td> <!-- Attribute -->
+          <td class="objblue best-score">77.05</td><td>74.49</td> <!-- Relation -->
+          <td>53.71</td><td>52.81</td> <!-- Reasoning -->
+          <!-- Advanced Following -->
+          <td>62.60</td><td>59.75</td> <!-- Avg -->
+          <td>67.78</td><td>64.89</td> <!-- Attribute + Relation -->
+          <td>58.64</td><td>55.10</td> <!-- Attribute + Reasoning -->
+          <td>63.78</td><td>61.75</td> <!-- Relation + Reasoning -->
+          <td class="objblue best-score">79.33</td><td>75.00</td> <!-- Style -->
+          <td>26.63</td><td>24.47</td> <!-- Text -->
+          <!-- Designer -->
+          <td class="objblue best-score">66.25</td><td>68.73</td> <!-- Avg -->
+        </tr>
+
+        <!-- Playground v2 -->
+        <tr><td class="model-name">Playground v2</td><td>45.51</td><td>52.73</td> <!-- Overall -->
+          <!-- Basic Following -->
+          <td>51.89</td><td>60.88</td> <!-- Avg -->
+          <td>53.65</td><td>63.75</td> <!-- Attribute -->
+          <td>62.20</td><td>72.26</td> <!-- Relation -->
+          <td>39.83</td><td>46.64</td> <!-- Reasoning -->
+          <!-- Advanced Following -->
+          <td>44.11</td><td>52.28</td> <!-- Avg -->
+          <td>48.32</td><td>58.74</td> <!-- Attribute + Relation -->
+          <td>39.81</td><td>46.10</td> <!-- Attribute + Reasoning -->
+          <td>47.24</td><td>55.06</td> <!-- Relation + Reasoning -->
+          <td>61.33</td><td>74.00</td> <!-- Style -->
+          <td>2.54</td><td>6.03</td> <!-- Text -->
+          <!-- Designer -->
+          <td>54.71</td><td>51.99</td> <!-- Avg -->
+        </tr>
+
+        <!-- Playground v2.5 -->
+        <tr><td class="model-name">Playground v2.5</td><td>45.13</td><td>52.36</td> <!-- Overall -->
+          <!-- Basic Following -->
+          <td>52.96</td><td>61.06</td> <!-- Avg -->
+          <td>55.90</td><td>65.90</td> <!-- Attribute -->
+          <td>62.78</td><td>72.24</td> <!-- Relation -->
+          <td>40.20</td><td>45.04</td> <!-- Reasoning -->
+          <!-- Advanced Following -->
+          <td>44.36</td><td>52.02</td> <!-- Avg -->
+          <td>51.00</td><td>60.62</td> <!-- Attribute + Relation -->
+          <td>39.96</td><td>45.94</td> <!-- Attribute + Reasoning -->
+          <td>45.72</td><td>52.85</td> <!-- Relation + Reasoning -->
+          <td>58.00</td><td>69.67</td> <!-- Style -->
+          <td>1.77</td><td>7.66</td> <!-- Text -->
+          <!-- Designer -->
+          <td>50.87</td><td>51.36</td> <!-- Avg -->
+        </tr>
+
+        <!-- PixArt-delta -->
+        <tr><td class="model-name">PixArt-delta</td><td>42.33</td><td>47.18</td> <!-- Overall -->
+          <!-- Basic Following -->
+          <td>48.53</td><td>53.66</td> <!-- Avg -->
+          <td>47.65</td><td>52.50</td> <!-- Attribute -->
+          <td>60.40</td><td>66.78</td> <!-- Relation -->
+          <td>37.53</td><td>41.69</td> <!-- Reasoning -->
+          <!-- Advanced Following -->
+          <td>41.67</td><td>45.56</td> <!-- Avg -->
+          <td>45.60</td><td>50.44</td> <!-- Attribute + Relation -->
+          <td>38.55</td><td>40.71</td> <!-- Attribute + Reasoning -->
+          <td>43.98</td><td>47.09</td> <!-- Relation + Reasoning -->
+          <td>58.00</td><td>77.00</td> <!-- Style -->
+          <td>0.53</td><td>1.53</td> <!-- Text -->
+          <!-- Designer -->
+          <td>48.76</td><td>46.90</td> <!-- Avg -->
+        </tr>
+
+        <!-- PixArt-alpha -->
+        <tr><td class="model-name">PixArt-alpha</td><td>45.55</td><td>51.11</td> <!-- Overall -->
+          <!-- Basic Following -->
+          <td>51.42</td><td>56.16</td> <!-- Avg -->
+          <td>51.95</td><td>56.60</td> <!-- Attribute -->
+          <td>62.80</td><td>68.62</td> <!-- Relation -->
+          <td>39.49</td><td>43.27</td> <!-- Reasoning -->
+          <!-- Advanced Following -->
+          <td>44.89</td><td>48.73</td> <!-- Avg -->
+          <td>51.02</td><td>53.62</td> <!-- Attribute + Relation -->
+          <td>39.74</td><td>43.98</td> <!-- Attribute + Reasoning -->
+          <td>47.00</td><td>49.65</td> <!-- Relation + Reasoning -->
+          <td>63.33</td><td>84.33</td> <!-- Style -->
+          <td>1.77</td><td>4.60</td> <!-- Text -->
+          <!-- Designer -->
+          <td>52.85</td><td>55.33</td> <!-- Avg -->
+        </tr>
+
+        <!-- PixArt-sigma -->
+        <tr><td class="model-name">PixArt-sigma</td><td>56.37</td><td>56.87</td> <!-- Overall -->
+          <!-- Basic Following -->
+          <td>62.34</td><td>63.58</td> <!-- Avg -->
+          <td>66.75</td><td>69.35</td> <!-- Attribute -->
+          <td>71.14</td><td>71.97</td> <!-- Relation -->
+          <td>49.14</td><td>49.42</td> <!-- Reasoning -->
+          <!-- Advanced Following -->
+          <td>55.60</td><td>55.70</td> <!-- Avg -->
+          <td>60.95</td><td>61.95</td> <!-- Attribute + Relation -->
+          <td>52.47</td><td>53.13</td> <!-- Attribute + Reasoning -->
+          <td>56.14</td><td>54.79</td> <!-- Relation + Reasoning -->
+          <td class="objblue best-score">83.67</td><td>83.00</td> <!-- Style -->
+          <td>5.56</td><td>6.08</td> <!-- Text -->
+          <!-- Designer -->
+          <td>61.54</td><td>62.16</td> <!-- Avg -->
+        </tr>
+
+        <!-- LUMINA-Next -->
+        <tr><td class="model-name">LUMINA-Next</td><td>48.77</td><td>48.78</td> <!-- Overall -->
+          <!-- Basic Following -->
+          <td>55.09</td><td>55.76</td> <!-- Avg -->
+          <td>55.25</td><td>58.15</td> <!-- Attribute -->
+          <td>64.11</td><td>65.24</td> <!-- Relation -->
+          <td>45.90</td><td>43.89</td> <!-- Reasoning -->
+          <!-- Advanced Following -->
+          <td>47.20</td><td>46.04</td> <!-- Avg -->
+          <td>50.63</td><td>51.03</td> <!-- Attribute + Relation -->
+          <td>43.68</td><td>41.33</td> <!-- Attribute + Reasoning -->
+          <td>49.55</td><td>48.25</td> <!-- Relation + Reasoning -->
+          <td>71.00</td><td>68.00</td> <!-- Style -->
+          <td>5.17</td><td>3.98</td> <!-- Text -->
+          <!-- Designer -->
+          <td>53.60</td><td>59.18</td> <!-- Avg -->
+        </tr>
+
+        <!-- Hunyuan-DiT -->
+        <tr><td class="model-name">Hunyuan-DiT</td><td>48.49</td><td>53.29</td> <!-- Overall -->
+          <!-- Basic Following -->
+          <td>61.38</td><td>62.96</td> <!-- Avg -->
+          <td>65.90</td><td>69.50</td> <!-- Attribute -->
+          <td>71.70</td><td>72.44</td> <!-- Relation -->
+          <td>46.54</td><td>46.94</td> <!-- Reasoning -->
+          <!-- Advanced Following -->
+          <td>51.78</td><td>53.90</td> <!-- Avg -->
+          <td>60.66</td><td>61.47</td> <!-- Attribute + Relation -->
+          <td>47.96</td><td>48.87</td> <!-- Attribute + Reasoning -->
+          <td>53.97</td><td>54.86</td> <!-- Relation + Reasoning -->
+          <td>44.00</td><td>77.67</td> <!-- Style -->
+          <td>1.53</td><td>2.16</td> <!-- Text -->
+          <!-- Designer -->
+          <td>44.17</td><td>45.66</td> <!-- Avg -->
+        </tr>
+
+        <!-- ───────────── AR based ‒ Open-Source ───────────── -->
+        <tr>
+          <td colspan="25" class="category-header">
+            <span class="middleyellow">AR based</span> Models (QwenVL2.5-72B Evaluation)
+          </td>
+        </tr>
+
+        <!-- Llamagen -->
+        <tr><td class="model-name">Llamagen</td><td>42.03</td><td>40.85</td> <!-- Overall -->
+          <!-- Basic Following -->
+          <td>49.25</td><td>49.59</td> <!-- Avg -->
+          <td>48.20</td><td>50.90</td> <!-- Attribute -->
+          <td>60.02</td><td>58.44</td> <!-- Relation -->
+          <td>39.53</td><td>39.45</td> <!-- Reasoning -->
+          <!-- Advanced Following -->
+          <td>40.95</td><td>39.77</td> <!-- Avg -->
+          <td>42.85</td><td>39.72</td> <!-- Attribute + Relation -->
+          <td>39.54</td><td>38.97</td> <!-- Attribute + Reasoning -->
+          <td>43.82</td><td>44.34</td> <!-- Relation + Reasoning -->
+          <td>51.67</td><td>43.00</td> <!-- Style -->
+          <td>3.40</td><td>6.85</td> <!-- Text -->
+          <!-- Designer -->
+          <td>49.26</td><td>46.03</td> <!-- Avg -->
+        </tr>
+
+        <!-- LightGen -->
+        <tr><td class="model-name">LightGen</td><td>52.67</td><td>47.45</td> <!-- Overall -->
+          <!-- Basic Following -->
+          <td>61.60</td><td>53.78</td> <!-- Avg -->
+          <td>63.10</td><td>59.90</td> <!-- Attribute -->
+          <td>71.44</td><td>58.43</td> <!-- Relation -->
+          <td>50.26</td><td>43.01</td> <!-- Reasoning -->
+          <!-- Advanced Following -->
+          <td>53.39</td><td>47.56</td> <!-- Avg -->
+          <td>59.48</td><td>51.27</td> <!-- Attribute + Relation -->
+          <td>50.67</td><td>46.07</td> <!-- Attribute + Reasoning -->
+          <td>55.56</td><td>50.14</td> <!-- Relation + Reasoning -->
+          <td>59.00</td><td>50.00</td> <!-- Style -->
+          <td>3.45</td><td>6.61</td> <!-- Text -->
+          <!-- Designer -->
+          <td>61.04</td><td>61.66</td> <!-- Avg -->
+        </tr>
+
+        <!-- Show-o -->
+        <tr><td class="model-name">Show-o</td><td>56.94</td><td class="middleyellow best-score">58.33</td> <!-- Overall -->
+          <!-- Basic Following -->
+          <td>66.11</td><td class="middleyellow best-score">67.47</td> <!-- Avg -->
+          <td>71.60</td><td class="middleyellow best-score">75.35</td> <!-- Attribute -->
+          <td class="middleyellow best-score">74.34</td><td>73.90</td> <!-- Relation -->
+          <td>52.39</td><td class="middleyellow best-score">53.17</td> <!-- Reasoning -->
+          <!-- Advanced Following -->
+          <td>57.07</td><td class="middleyellow best-score">58.22</td> <!-- Avg -->
+          <td>64.52</td><td>65.69</td> <!-- Attribute + Relation -->
+          <td>53.98</td><td>55.34</td> <!-- Attribute + Reasoning -->
+          <td class="middleyellow best-score">58.13</td><td class="middleyellow best-score">58.57</td> <!-- Relation + Reasoning -->
+          <td>62.67</td><td>64.67</td> <!-- Style -->
+          <td>8.09</td><td>12.31</td> <!-- Text -->
+          <!-- Designer -->
+          <td>66.75</td><td>66.00</td> <!-- Avg -->
+        </tr>
+
+        <!-- Infinity -->
+        <tr><td class="model-name">Infinity</td><td>61.31</td><td>58.49</td> <!-- Overall -->
+          <!-- Basic Following -->
+          <td>66.40</td><td>65.00</td> <!-- Avg -->
+          <td>73.40</td><td>73.15</td> <!-- Attribute -->
+          <td>74.02</td><td class="middleyellow best-score">72.75</td> <!-- Relation -->
+          <td>51.79</td><td>49.10</td> <!-- Reasoning -->
+          <!-- Advanced Following -->
+          <td>61.24</td><td>57.89</td> <!-- Avg -->
+          <td class="middleyellow best-score">66.96</td><td>65.66</td> <!-- Attribute + Relation -->
+          <td>58.78</td><td>54.15</td> <!-- Attribute + Reasoning -->
+          <td class="middleyellow best-score">60.85</td><td class="middleyellow best-score">57.20</td> <!-- Relation + Reasoning -->
+          <td class="middleyellow best-score">69.67</td><td>64.00</td> <!-- Style -->
+          <td>29.89</td><td>25.05</td> <!-- Text -->
+          <!-- Designer -->
+          <td>66.38</td><td>65.38</td> <!-- Avg -->
+        </tr>
+
+        <!-- JanusPro -->
+        <tr><td class="model-name">JanusPro</td><td class="middleyellow best-score">64.06</td><td>61.84</td> <!-- Overall -->
+          <!-- Basic Following -->
+          <td class="middleyellow best-score">69.44</td><td>66.82</td> <!-- Avg -->
+          <td class="middleyellow best-score">75.35</td><td>75.10</td> <!-- Attribute -->
+          <td>74.50</td><td>72.10</td> <!-- Relation -->
+          <td class="middleyellow best-score">58.46</td><td>53.26</td> <!-- Reasoning -->
+          <!-- Advanced Following -->
+          <td class="middleyellow best-score">62.95</td><td>60.96</td> <!-- Avg -->
+          <td class="middleyellow best-score">68.86</td><td class="middleyellow best-score">69.03</td> <!-- Attribute + Relation -->
+          <td class="middleyellow best-score">60.02</td><td>57.36</td> <!-- Attribute + Reasoning -->
+          <td class="middleyellow best-score">62.46</td><td>59.37</td> <!-- Relation + Reasoning -->
+          <td>62.00</td><td>54.00</td> <!-- Style -->
+          <td class="middleyellow best-score">43.82</td><td class="middleyellow best-score">45.02</td> <!-- Text -->
+          <!-- Designer -->
+          <td class="middleyellow best-score">71.09</td><td class="middleyellow best-score">71.34</td> <!-- Avg -->
+        </tr>
+</tbody>
+
+      
+    </table>
+  </div>
+</body>
+</html> 
