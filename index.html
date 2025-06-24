@@ -280,47 +280,12 @@
                     transform-origin:top center;
                     width:100%;
                     overflow-x:hidden;
-                    margin-top:-50px;">
+                    margin-top:-25px;">
           <iframe src="table_gpt4o.html"
                   width="100%"
                   height="820px"
                   style="border:none; overflow:hidden;"
                   id="table-frame-testmini"></iframe>
-        </div>
-
-        <p class="has-text-centered" style="position:relative; z-index:10; margin-top: 280px;">
-          Evaluated by {
-          <label class="radio" style="margin-right:5px; cursor:pointer;">
-            <input type="radio"
-                   name="evaluator-entire"
-                   id="gpt4o-radio-entire"
-                   checked
-                   onclick="document.getElementById('table-frame-entire').src='table_entire_gpt4o.html';">
-            <b>GPT-4o</b>
-          </label>
-          /
-          <label class="radio" style="margin-left:5px; cursor:pointer;">
-            <input type="radio"
-                   name="evaluator-entire"
-                   id="qwen-radio-entire"
-                   onclick="document.getElementById('table-frame-entire').src='table_entire_qwen.html';">
-            <b>QwenVL2.5-72B</b>
-          </label>
-          }
-          on the <b>ENTIRE</b> set of <img src="static/images/logo_transparent_bg.png" alt="Icon" style="height: 1.4em; vertical-align: middle; margin-right: -0.2em;"> <span class='tiifbench'>TIIF-Bench</span>
-        </p>
-        
-        <!-- 保持原 iframe 容器，如需仍用负 margin 可继续使用 -->
-        <div style="transform:scale(1.4);
-                    transform-origin:top center;
-                    width:100%;
-                    overflow-x:hidden;
-                    margin-top:-170px;">
-          <iframe src="table_entire_gpt4o.html"
-                  width="100%"
-                  height="820px"
-                  style="border:none; overflow:hidden;"
-                  id="table-frame-entire"></iframe>
         </div>
         
       </div>
@@ -330,7 +295,7 @@
 
 
 <!-- Construction -->
-<section class="section" style="margin-top: 90px;">
+<section class="section" style="margin-top: 200px;">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-12">
@@ -397,7 +362,7 @@
 
 
 
-<section class="section" id="BibTeX" style="margin-top: 175px;">
+<section class="section" id="BibTeX" style="margin-top: 195px;">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>
